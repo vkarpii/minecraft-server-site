@@ -19,4 +19,8 @@ public class MainController {
     public String personalOffice(Model model) {
         return "personal-office";
     }
+    @GetMapping("/login")
+    public String login(Model model) {
+        return "login";
+    }
 }
