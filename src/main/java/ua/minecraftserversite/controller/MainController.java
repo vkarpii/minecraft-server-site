@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
 import ua.minecraftserversite.entity.User;
+import ua.minecraftserversite.service.UserService;
 import ua.minecraftserversite.util.HibernateUtil;
 
 @Controller
@@ -37,12 +38,7 @@ public class MainController {
             @ModelAttribute("password") String pass,
             @SessionAttribute(value = "user",required = false) User user,
             Model model) {
-        SessionFactory factory = HibernateUtil.getSessionFactory();
-        Session session = factory.getCurrentSession();
-        Query query=session.createQuery("from user where name=:name and password=:password");
-        query.setParameter("name", name);
-        query.setParameter("password", pass);
-        user = (User)query.uniqueResult();
+        user = UserService.getInstance().getUser(name,pass);
         if (user == null){
             System.out.println("wrong data");
             return "login";
