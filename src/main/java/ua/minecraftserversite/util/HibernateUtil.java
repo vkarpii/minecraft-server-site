@@ -5,6 +5,10 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 import org.springframework.beans.factory.annotation.Value;
+import ua.minecraftserversite.entity.News;
+import ua.minecraftserversite.entity.Permission;
+import ua.minecraftserversite.entity.Role;
+import ua.minecraftserversite.entity.User;
 
 import java.util.Properties;
 
@@ -46,7 +50,10 @@ public class HibernateUtil {
             settings.put(HBM2DDL_AUTO, DB_CONF_HB2DDL_AUTO);
             configuration.setProperties(settings);
 
-            //configuration.addAnnotatedClass(Student.class);
+            configuration.addAnnotatedClass(User.class);
+            configuration.addAnnotatedClass(Permission.class);
+            configuration.addAnnotatedClass(Role.class);
+            configuration.addAnnotatedClass(News.class);
 
             ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
                     .applySettings(configuration.getProperties()).build();

@@ -22,7 +22,17 @@ public class User {
     @Column(name = "name")
     private String name;
 
+    @OneToOne
+    @JoinColumn(name = "permission_id")
+    private Permission permission;
+
+    @OneToOne
+    @JoinColumn(name = "role_id")
+    private Role role;
+
+
     public User(String name){
         this.name = name;
     }
+
 }

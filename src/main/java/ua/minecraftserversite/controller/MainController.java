@@ -26,7 +26,7 @@ public class MainController {
         }
         return "personal-office";
     }
-    
+
     @PostMapping ("/loginPOST")
     public String loginPost(
             @ModelAttribute("nickname") String name,
