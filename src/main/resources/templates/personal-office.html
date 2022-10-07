@@ -8,6 +8,11 @@
 <body>
     <div class="container">
         <div data-th-include="header.html" class="mb-auto"></div>
+        <p>
+            <span>Hi, </span>
+            <span th:utext="${user.getName()}"></span>
+        </p>
+        <a href="/exit">Exit</a>
     </div>
 </body>
 </html>

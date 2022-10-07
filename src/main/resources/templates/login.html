@@ -9,11 +9,11 @@
     <div class="container">
         <div data-th-include="header.html" class="mb-auto"></div>
         <main>
-            <form>
+            <form action="/loginPOST" method="post">
                 <label>Нікнейм</label><br>
-                <input type="text"><br>
+                <input type="text" name="nickname" id="nickname"><br>
                 <label>Пароль</label><br>
-                <input type="password"><br>
+                <input type="password" name="password" id="password"><br>
                 <input type="submit"><br>
             </form>
         </main>
