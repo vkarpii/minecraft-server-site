@@ -1,13 +1,19 @@
 body {
-    background-image: url(images/background-adare-restaurant.jpg);
+    background-image: linear-gradient(rgba(56, 124, 23), rgba(165,42,42));
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
     background-color: white;
 }
 
+h1 {
+    margin-left: 20px;
+    color: white;
+}
+
 .container{
-    width: 1024px;
+    background: rgba(0, 0, 0, 0.5);
+    width: 900px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -15,7 +21,7 @@ body {
 nav{
     padding-top: 20px;
     padding-bottom: 20px;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid white;
     text-align: right;
 }
 
@@ -27,14 +33,13 @@ main{
 }
 
 footer{
-    background-color: white;
     text-align: center;
-    height: 200px;
-    border: 1px solid black;
+    height: 150px;
+    border: 1px solid white;
 }
 
 a{
-    color: black;
+    color: white;
     font-family: Arial, Helvetica, sans-serif;
     text-decoration: none;
     font-size: 30px;
@@ -53,7 +58,7 @@ a{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    padding-bottom: 100px;
+    padding-bottom: 55px;
 }
 
 .Fly, .Creative, .Vip, .Premium{
@@ -61,10 +66,10 @@ a{
     width: 40%;
     padding: 100px;
     margin-top: 50px;
-    border: 1px solid black;
+    border: 1px solid white;
 }
 .navbutton:hover {
-    background-color: rgb(236, 236, 236);
+    background-color: rgba(4, 4, 4, 0.2);
     transition-duration: 250ms;
 }
 .mainPartCases{
