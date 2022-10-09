@@ -95,3 +95,6 @@ a{
 .mainPartCases{
     display: none;
 }
+#copy{
+    margin-left: 360px;
+}

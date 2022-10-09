@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Start page</title>
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/copy-button-alert.css">
 </head>
 <body>
     <div class="container">
@@ -13,6 +14,8 @@
             <div class="mainPartOne">
                 <a class="navbutton" id="privileges">Привілегії</a>
                 <a class="navbutton" id="cases">Кейси</a>
+                <a class="navbutton" id="copy" onclick="copy()" onmouseout="outFunc()" data-clipboard-target="#copy">
+                        minecraft.server.site</a>
             </div>
 
             <div class="mainPartTwo" id="mainPartTwo">
@@ -54,5 +57,7 @@
     </div>
 
     <script src="js/slide.js"></script>
+    <script src="js/copy-button.js"></script>
+    <script src="js/dist/clipboard.min.js"></script>
 </body>
 </html>
