@@ -1,3 +1,31 @@
-h1{
+h1, h2{
     text-align: center;
+    color: white;
 }
+
+form {
+    margin-left: 30px;
+    color: white;
+}
+
+input{
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.button-add{
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgba(0,0,0,0);
+    border: 1px solid white;
+    border-radius: 9em;
+}
+
+textarea {
+    resize: vertical;
+    max-height: 400px;
+    width: 700px;
+    height: 300px;
+}
+
+
