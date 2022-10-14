@@ -12,7 +12,7 @@
 
             <main>
                 <div id="addArticle">
-                    <div th:if="${user != null}">
+                    <div th:if="${user != null && user.getPermission().getId() == 1}">
                     <h2>Добавлення статті</h2>
                     <form action="/news" method="post">
                         <label>Назва статті</label><br>

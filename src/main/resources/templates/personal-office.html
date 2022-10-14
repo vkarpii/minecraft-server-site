@@ -12,6 +12,10 @@
             <span>Hi, </span>
             <span th:utext="${user.getNickname()}"></span>
         </p>
+        <p>
+            <span>Привілегія : </span>
+            <span th:utext="${user.getPermission().getName()}"></span>
+        </p>
         <a href="/exit">Exit</a>
         <div data-th-include="footer.html" class="mb-auto"></div>
     </div>
