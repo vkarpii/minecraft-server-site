@@ -6,6 +6,8 @@ import org.hibernate.query.Query;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 import ua.minecraftserversite.entity.User;
+import ua.minecraftserversite.exception.LoginException;
+import ua.minecraftserversite.repository.UserRepository;
 import ua.minecraftserversite.util.HibernateUtil;
 
 @Service
@@ -19,14 +21,11 @@ public class UserService {
             service = new UserService();
         return service;
     }
-    
-    public User getUser(String name, String password){
-        SessionFactory factory = HibernateUtil.getSessionFactory();
-        Session session = factory.getCurrentSession();
-        Query query=session.createQuery("from user where name=:name and password=:password");
-        query.setParameter("name", name);
-        query.setParameter("password", password);
-        User user = (User)query.uniqueResult();
+    public User login(String name, String password) throws LoginException {
+        User user = UserRepository.getInstance().getUser(name,password);
+        if (user == null){
+            throw new LoginException("Wrong name or password");
+        }
         return user;
     }
 }

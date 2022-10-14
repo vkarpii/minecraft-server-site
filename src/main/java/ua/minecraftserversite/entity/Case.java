@@ -12,16 +12,18 @@ import javax.persistence.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(schema = "news")
-public class News {
+@Table(schema = "case")
+public class Case {
     @Id
-    @Column(name = "news_id")
+    @Column(name = "case_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @Column(name = "news_title")
-    private String title;
-    @Column(name = "news_text")
-    private String text;
-    @Column(name = "news_photo")
-    private String photo;
+
+    @Column(name = "case_name")
+    private String name;
+    @Column(name = "case_description")
+    private String description;
+    @Column(name = "case_cost")
+    private int cost;
+
 }

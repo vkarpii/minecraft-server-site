@@ -18,11 +18,13 @@ import javax.persistence.Table;
 @Table(schema = "permission")
 public class Permission {
     @Id
-    @Column(name = "permission_id")
+    @Column(name = "perm_id")
     private long id;
     @Column(name = "perm_name")
     private String name;
     @Column(name = "perm_description")
     private String description;
+    @Column(name = "perm_cost")
+    private int cost;
 
 }

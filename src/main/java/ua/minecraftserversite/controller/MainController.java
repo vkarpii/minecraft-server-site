@@ -1,15 +1,12 @@
 package ua.minecraftserversite.controller;
 
-import org.hibernate.query.Query;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
 import ua.minecraftserversite.entity.User;
+import ua.minecraftserversite.exception.LoginException;
 import ua.minecraftserversite.service.UserService;
-import ua.minecraftserversite.util.HibernateUtil;
 
 @Controller
 @SessionAttributes("user")
@@ -38,13 +35,11 @@ public class MainController {
             @ModelAttribute("password") String pass,
             @SessionAttribute(value = "user",required = false) User user,
             Model model) {
-        user = UserService.getInstance().getUser(name,pass);
-        if (user == null){
-            System.out.println("wrong data");
-            return "login";
-        } else {
-            //user = new User(name);
+        try {
+            user = UserService.getInstance().login(name,pass);
             model.addAttribute("user",user);
+        } catch (LoginException e){
+            return "login";
         }
         return "personal-office";
     }

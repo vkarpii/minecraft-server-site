@@ -6,10 +6,8 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 import org.springframework.stereotype.Component;
-import ua.minecraftserversite.entity.News;
-import ua.minecraftserversite.entity.Permission;
-import ua.minecraftserversite.entity.Role;
-import ua.minecraftserversite.entity.User;
+import ua.minecraftserversite.entity.*;
+import org.hibernate.Session;
 
 import java.io.InputStream;
 import java.util.Properties;
@@ -36,8 +34,9 @@ public class HibernateUtil {
             configuration.setProperties(properties);
             configuration.addAnnotatedClass(User.class);
             configuration.addAnnotatedClass(Permission.class);
-            configuration.addAnnotatedClass(Role.class);
+            configuration.addAnnotatedClass(History.class);
             configuration.addAnnotatedClass(News.class);
+            configuration.addAnnotatedClass(Case.class);
 
             ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
                     .applySettings(configuration.getProperties()).build();
@@ -53,5 +52,8 @@ public class HibernateUtil {
         if (sessionFactory == null)
             sessionFactory = buildSessionFactory();
         return sessionFactory;
+    }
+    public static Session getCurrentSession(){
+        return getSessionFactory().getCurrentSession();
     }
 }

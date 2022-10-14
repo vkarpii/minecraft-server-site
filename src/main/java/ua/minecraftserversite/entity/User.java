@@ -15,24 +15,20 @@ import javax.persistence.*;
 @Table(schema = "user")
 public class User {
     @Id
-    @Column(name = "id")
+    @Column(name = "user_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "nickname")
+    private String nickname;
+    @Column(name = "password")
+    private String password;
 
     @OneToOne
-    @JoinColumn(name = "permission_id")
+    @JoinColumn(name = "perm_id")
     private Permission permission;
-
-    @OneToOne
-    @JoinColumn(name = "role_id")
-    private Role role;
-
-
-    public User(String name){
-        this.name = name;
+    public User(String nickname){
+        this.nickname = nickname;
     }
 
 }
