@@ -24,4 +24,9 @@ public class News {
     private String text;
     @Column(name = "news_photo")
     private String photo;
+
+    public News(String title, String text){
+        this.title = title;
+        this.text = text;
+    }
 }

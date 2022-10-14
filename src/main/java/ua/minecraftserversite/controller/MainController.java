@@ -4,6 +4,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
+
+import ua.minecraftserversite.entity.News;
 import ua.minecraftserversite.entity.User;
 import ua.minecraftserversite.exception.LoginException;
 import ua.minecraftserversite.service.UserService;
@@ -27,6 +29,15 @@ public class MainController {
             return "login";
         }
         return "personal-office";
+    }
+
+    @PostMapping("/news")
+    public String addArticle(
+            @ModelAttribute("title") String title,
+            @ModelAttribute("text") String full_text,
+            Model model){
+        News news = new News(title, full_text);
+        return "";
     }
 
     @PostMapping ("/loginPOST")

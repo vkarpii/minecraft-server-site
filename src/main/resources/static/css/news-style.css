@@ -22,10 +22,9 @@ input{
 }
 
 textarea {
-    resize: vertical;
-    max-height: 400px;
+    resize: none;
     width: 700px;
-    height: 300px;
+    height: 350px;
 }
 
 
