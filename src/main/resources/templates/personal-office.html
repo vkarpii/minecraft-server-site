@@ -4,19 +4,25 @@
     <meta charset="UTF-8">
     <title>Personal Office</title>
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/login-form.css">
+
 </head>
 <body>
     <div class="container">
         <div data-th-include="header.html" class="mb-auto"></div>
-        <p>
-            <span>Hi, </span>
-            <span th:utext="${user.getNickname()}"></span>
-        </p>
-        <p>
-            <span>Привілегія : </span>
-            <span th:utext="${user.getPermission().getName()}"></span>
-        </p>
-        <a href="/exit">Exit</a>
+        <main>
+            <div class="my-account">
+                <p>
+                    <span>Hi, </span>
+                    <span th:utext="${user.getNickname()}"></span>
+                </p>
+                <p>
+                    <span>Привілегія: </span>
+                    <span th:utext="${user.getPermission().getName()}"></span>
+                </p>
+                <a class="nuvbutton" href="/exit">Exit</a>
+            </div>
+        </main>
         <div data-th-include="footer.html" class="mb-auto"></div>
     </div>
 </body>

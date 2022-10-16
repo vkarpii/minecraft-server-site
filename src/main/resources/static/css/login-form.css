@@ -1,9 +1,10 @@
 .login-form{
     color: white;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 14px;
-    margin-left: 30px;
+    text-align: center;
+    margin-top: 8%;
 }
+
 .login-submit{
     color: white;
     font-family: Arial, Helvetica, sans-serif;
@@ -12,10 +13,22 @@
     border-radius: 9em;
 }
 input{
+    font-size: 17px;
+    width: 200px;
+    height: 30px;
     margin-bottom: 10px;
     cursor: pointer;
 }
-button:hover{
+
+.nuvbutton:hover{
     background-color: rgba(4, 4, 4, 0.5);
     color: white;
 }
+
+span{
+    color: white;
+    font-size: 25px;
+}
+
+
+

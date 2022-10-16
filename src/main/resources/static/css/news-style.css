@@ -5,6 +5,8 @@ h1, h2{
 
 h3{
     color: white;
+    font-size: 35px;
+    border-bottom: 3px solid rgba(0,0,0,0.1);
 }
 
 form {
@@ -29,6 +31,19 @@ textarea {
     resize: none;
     width: 700px;
     height: 350px;
+    font-size: 20px;
+}
+
+.article {
+    background-color: rgba(0,0,0,0.35);
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+.article p{
+    color: white;
+    font-size: 25px;
 }
 
 
