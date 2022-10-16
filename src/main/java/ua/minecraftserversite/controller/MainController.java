@@ -6,14 +6,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
 
+import ua.minecraftserversite.entity.History;
 import ua.minecraftserversite.entity.News;
 import ua.minecraftserversite.entity.Permission;
 import ua.minecraftserversite.entity.User;
 import ua.minecraftserversite.exception.LoginException;
-import ua.minecraftserversite.service.CaseService;
-import ua.minecraftserversite.service.NewsService;
-import ua.minecraftserversite.service.PermissionService;
-import ua.minecraftserversite.service.UserService;
+import ua.minecraftserversite.service.*;
 
 import java.util.List;
 @Slf4j
@@ -42,6 +40,8 @@ public class MainController {
     public String personalOffice(@SessionAttribute(value = "user",required = false) User user, Model model) {
         if (user==null)
             return "login";
+        List<History> history = HistoryService.getInstance().printHistory(user);
+        model.addAttribute("histories",history);
         return "personal-office";
     }
 
@@ -55,11 +55,12 @@ public class MainController {
         return "redirect:/news";
     }
 
-    @PostMapping ("/loginPOST")
+    @PostMapping ("/login")
     public String loginPost(
             @ModelAttribute("nickname") String name,
             @ModelAttribute("password") String pass,
             @SessionAttribute(value = "user",required = false) User user,
+            @RequestAttribute(value = "histories",required = false)List histories,
             Model model) {
         try {
             user = UserService.getInstance().login(name,pass);
@@ -67,7 +68,7 @@ public class MainController {
         } catch (LoginException e){
             return "login";
         }
-        return "personal-office";
+        return "redirect:/personal-office";
     }
     @GetMapping("/exit")
     public String exit(SessionStatus status,Model model){

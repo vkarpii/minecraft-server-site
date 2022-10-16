@@ -24,6 +24,12 @@
                 </div>
                 <a class="nuvbutton exit" href="/exit">Exit</a>
             </div>
+            <div class="history-container">
+                <h3>History</h3>
+                <div th:each="item : ${histories}">
+                    <span>Ви купляли <span th:text="${item.getDescription()}"></span></span>
+                </div>
+            </div>
         </main>
         <div data-th-include="footer.html" class="mb-auto"></div>
     </div>
