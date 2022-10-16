@@ -28,5 +28,6 @@ public class News {
     public News(String title, String text){
         this.title = title;
         this.text = text;
+        this.photo = "photo";
     }
 }

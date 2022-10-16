@@ -18,33 +18,18 @@
                         <label>Назва статті</label><br>
                         <input type="text" name="title" id="titleOfArticle"><br>
                         <label>Стаття</label><br>
-                        <textarea name="full_text" id="article"></textarea><br>
+                        <textarea name="text" id="article"></textarea><br>
                         <input type="submit" class="button-add" value="Добавити"><br>
                     </form>
                     </div>
                 </div>
                 <div id="articles">
                     <h1>Останні новини</h1>
-                    <h1>Останні новини</h1>
-                    <h1>Останні новини</h1>
-                    <h1>Останні новини</h1>
-                    <h1>Останні новини</h1>
-                    <h1>Останні новини</h1>
-                    <h1>Останні новини</h1>
-                    <h1>Останні новини</h1>
-                    <h1>Останні новини</h1>
-                    <h1>Останні новини</h1>
-                    <h1>Останні новини</h1>
-                    <h1>Останні новини</h1>
-                    <h1>Останні новини</h1>
-                    <h1>Останні новини</h1>
-                    <h1>Останні новини</h1>
-                    <h1>Останні новини</h1>
-                    <h1>Останні новини</h1>
-                    <h1>Останні новини</h1>
-                    <h1>Останні новини</h1>
-                    <h1>Останні новини</h1>
-                    <h1>Останні новини</h1>
+                    <div class="article" th:each="item : ${news}">
+                        <h1 th:text="${item.getTitle()}"></h1>
+                        <p th:text="${item.getText()}"></p>
+                    </div>
+
                 </div>
 
 

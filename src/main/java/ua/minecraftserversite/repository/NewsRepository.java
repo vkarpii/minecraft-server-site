@@ -7,6 +7,8 @@ import ua.minecraftserversite.entity.News;
 import ua.minecraftserversite.entity.User;
 import ua.minecraftserversite.util.HibernateUtil;
 
+import java.util.List;
+
 @Repository
 public class NewsRepository {
     private static NewsRepository repository;
@@ -25,6 +27,22 @@ public class NewsRepository {
         News news = (News) query.uniqueResult();
         session.getTransaction().commit();
         return news;
+    }
+
+    public List<News> getAllNews(){
+        Session session = HibernateUtil.getCurrentSession();
+        session.beginTransaction();
+        Query query=session.createQuery("from News");
+        List<News> news = query.getResultList();
+        session.getTransaction().commit();
+        return news;
+    }
+    public boolean addNews(News news){
+        Session session = HibernateUtil.getCurrentSession();
+        session.beginTransaction();
+        session.save(news);
+        session.getTransaction().commit();
+        return true;
     }
 
 }
