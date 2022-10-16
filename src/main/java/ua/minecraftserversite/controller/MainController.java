@@ -1,6 +1,5 @@
 package ua.minecraftserversite.controller;
 
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -9,17 +8,24 @@ import org.springframework.web.bind.support.SessionStatus;
 import ua.minecraftserversite.entity.News;
 import ua.minecraftserversite.entity.User;
 import ua.minecraftserversite.exception.LoginException;
+import ua.minecraftserversite.service.CaseService;
 import ua.minecraftserversite.service.NewsService;
+import ua.minecraftserversite.service.PermissionService;
 import ua.minecraftserversite.service.UserService;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
 @SessionAttributes("user")
 public class MainController {
     @GetMapping("/")
-    public String index(Model model) {
+    public String index(Model model,
+                        @RequestAttribute(value = "cases",required = false) List cases,
+                        @RequestAttribute(value = "permissions",required = false) List permissions) {
+        cases = CaseService.getInstance().printCase();
+        permissions = PermissionService.getInstance().printPermissions();
+        model.addAttribute("cases",cases);
+        model.addAttribute("permissions",permissions);
         return "index";
     }
 
@@ -44,7 +50,7 @@ public class MainController {
             Model model){
         News news = new News(title, text);
         NewsService.getInstance().createNewArticle(news);
-        return "index";
+        return news(model,null);
     }
 
     @PostMapping ("/loginPOST")
@@ -62,8 +68,8 @@ public class MainController {
         return "personal-office";
     }
     @GetMapping("/exit")
-    public String exit(SessionStatus status){
+    public String exit(SessionStatus status,Model model){
         status.setComplete();
-        return "index";
+        return personalOffice(null,model);
     }
 }

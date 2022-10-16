@@ -12,11 +12,10 @@ import javax.persistence.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(schema = "case")
+@Table(schema = "case",name = "opencase")
 public class Case {
     @Id
     @Column(name = "case_id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @Column(name = "case_name")
