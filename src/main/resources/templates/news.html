@@ -26,10 +26,9 @@
                 <div id="articles">
                     <h1>Останні новини</h1>
                     <div class="article" th:each="item : ${news}">
-                        <h1 th:text="${item.getTitle()}"></h1>
+                        <h3 th:text="${item.getTitle()}"></h3>
                         <p th:text="${item.getText()}"></p>
                     </div>
-
                 </div>
 
 
