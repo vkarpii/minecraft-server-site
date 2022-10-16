@@ -11,16 +11,18 @@
     <div class="container">
         <div data-th-include="header.html" class="mb-auto"></div>
         <main>
-            <div class="my-account">
-                <p>
-                    <span>Hi, </span>
-                    <span th:utext="${user.getNickname()}"></span>
-                </p>
-                <p>
-                    <span>Привілегія: </span>
-                    <span th:utext="${user.getPermission().getName()}"></span>
-                </p>
-                <a class="nuvbutton" href="/exit">Exit</a>
+            <div class="account-container">
+                <div class="my-account">
+                    <p>
+                        <span>Нікнейм: </span>
+                        <span class="info" th:utext="${user.getNickname()}"></span>
+                    </p>
+                    <p>
+                        <span>Привілегія: </span>
+                        <span class="info" th:utext="${user.getPermission().getName()}"></span>
+                    </p>
+                </div>
+                <a class="nuvbutton exit" href="/exit">Exit</a>
             </div>
         </main>
         <div data-th-include="footer.html" class="mb-auto"></div>
