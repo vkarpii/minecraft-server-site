@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
 
 import ua.minecraftserversite.entity.News;
+import ua.minecraftserversite.entity.Permission;
 import ua.minecraftserversite.entity.User;
 import ua.minecraftserversite.exception.LoginException;
 import ua.minecraftserversite.service.CaseService;
@@ -77,5 +78,26 @@ public class MainController {
     public String deleteNews(@RequestParam("id") long id,Model model){
         NewsService.getInstance().deleteNews(id);
         return "redirect:/news";
+    }
+
+    @GetMapping("/buy-permission")
+    public String buyPermission(@SessionAttribute(value = "user",required = false) User user,
+                                @RequestParam("id") long id,
+                                @RequestAttribute(value = "bperm",required = false) Permission bperm,
+                      Model model) {
+        if (user==null)
+            return "redirect:/";
+        Permission permission = PermissionService.getInstance().getPermission(id);
+        model.addAttribute("bperm",permission);
+        return "buy-page";
+    }
+    @GetMapping("/buy-case")
+    public String buyCase(@SessionAttribute(value = "user",required = false) User user,
+                      @RequestParam("id") long id,
+                      Model model) {
+        if (user==null)
+            return "redirect:/";
+
+        return "buy-page";
     }
 }

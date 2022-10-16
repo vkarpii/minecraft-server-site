@@ -25,4 +25,13 @@ public class PermissionRepository {
         session.close();
         return permissions;
     }
+
+    public Permission getPermissionById(long id) {
+        Session session = HibernateUtil.getCurrentSession();
+        session.beginTransaction();
+        Permission permission = session.get(Permission.class,id);
+        session.getTransaction().commit();
+        session.close();
+        return permission;
+    }
 }

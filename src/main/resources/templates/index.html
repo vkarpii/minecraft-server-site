@@ -21,7 +21,7 @@
             </div>
 
             <div class="mainPartTwo" id="mainPartTwo">
-                <a href="#" class="navbutton" th:each="item : ${permissions}">
+                <a href="#" th:href="@{/buy-permission?id={id}(id=${item.getId()})}" class="navbutton" th:each="item : ${permissions}">
                     <i class="fa-solid fa-dove" th:text="${item.getName()}"></i>
                 </a>
                         <!--<a href="#" class="navbutton">
@@ -38,7 +38,7 @@
                     </a>-->
             </div>
             <div class="mainPartCases" id="mainPartCases">
-                <a href="#" class="navbutton" th:each="item : ${cases}">
+                <a href="#" th:href="@{/buy-case?id={id}(id=${item.getId()})}" class="navbutton" th:each="item : ${cases}">
                     <i class="fa-solid fa-caret-right" th:text="${item.getName()}"></i></a>
                 <!--<a href="#" class="navbutton">
                     <i class="fa-solid fa-caret-right">Кейс1</i></a>

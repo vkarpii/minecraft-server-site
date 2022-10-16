@@ -24,4 +24,9 @@ public class PermissionService {
                                 !str.getName().equalsIgnoreCase("Standart"))
                 .collect(Collectors.toList());
     }
+
+    public Permission getPermission(long id) {
+        Permission permission = PermissionRepository.getInstance().getPermissionById(id);
+        return permission;
+    }
 }
