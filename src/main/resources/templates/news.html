@@ -28,6 +28,7 @@
                     <div class="article" th:each="item : ${news}">
                         <h3 th:text="${item.getTitle()}"></h3>
                         <p th:text="${item.getText()}"></p>
+                        <a href="#" th:href="@{/delete/?id={id}(id=${item.getId()})}" th:if="${user != null && user.getPermission().getId() == 1}">Видалити</a>
                     </div>
                 </div>
 

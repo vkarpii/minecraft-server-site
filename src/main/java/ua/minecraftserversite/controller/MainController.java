@@ -1,5 +1,6 @@
 package ua.minecraftserversite.controller;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -14,7 +15,7 @@ import ua.minecraftserversite.service.PermissionService;
 import ua.minecraftserversite.service.UserService;
 
 import java.util.List;
-
+@Slf4j
 @Controller
 @SessionAttributes("user")
 public class MainController {
@@ -50,7 +51,7 @@ public class MainController {
             Model model){
         News news = new News(title, text);
         NewsService.getInstance().createNewArticle(news);
-        return news(model,null);
+        return "redirect:/news";
     }
 
     @PostMapping ("/loginPOST")
@@ -71,5 +72,10 @@ public class MainController {
     public String exit(SessionStatus status,Model model){
         status.setComplete();
         return personalOffice(null,model);
+    }
+    @GetMapping ("/delete")
+    public String deleteNews(@RequestParam("id") long id,Model model){
+        NewsService.getInstance().deleteNews(id);
+        return "redirect:/news";
     }
 }

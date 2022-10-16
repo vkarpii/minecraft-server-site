@@ -44,5 +44,11 @@ public class NewsRepository {
         session.getTransaction().commit();
         return true;
     }
-
+    public boolean deleteNews(long id){
+        Session session = HibernateUtil.getCurrentSession();
+        session.beginTransaction();
+        session.delete(session.get(News.class,id));
+        session.getTransaction().commit();
+        return true;
+    }
 }

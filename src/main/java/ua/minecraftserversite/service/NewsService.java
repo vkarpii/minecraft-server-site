@@ -36,4 +36,8 @@ public class NewsService {
         return true;
     }
 
+    public boolean deleteNews(long id){
+        NewsRepository.getInstance().deleteNews(id);
+        return true;
+    }
 }
