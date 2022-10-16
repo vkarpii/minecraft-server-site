@@ -12,7 +12,7 @@ create table `user`
    primary key (user_id)
 );
 
-create table `case`
+create table opencase
 (
    case_id             int not null  comment '',
    case_name           varchar(100) not null  comment '',
@@ -59,6 +59,11 @@ INSERT INTO hb_minecraft_server.permission (`perm_id`,`perm_name`, `perm_descrip
 INSERT INTO hb_minecraft_server.permission (`perm_id`,`perm_name`, `perm_description`,`perm_cost`) VALUES ('4','Vip', 'Some desc','80');
 INSERT INTO hb_minecraft_server.permission (`perm_id`,`perm_name`, `perm_description`,`perm_cost`) VALUES ('5','Fly', 'Some desc','30');
 INSERT INTO hb_minecraft_server.permission (`perm_id`,`perm_name`, `perm_description`,`perm_cost`) VALUES ('6','Standart', 'Some desc','0');
+
+INSERT INTO hb_minecraft_server.opencase (`case_id`,`case_name`, `case_description`,`case_cost`) VALUES ('1','God case', 'Some desc','0');
+INSERT INTO hb_minecraft_server.opencase (`case_id`,`case_name`, `case_description`,`case_cost`) VALUES ('2','Pro case', 'Some desc','0');
+INSERT INTO hb_minecraft_server.opencase (`case_id`,`case_name`, `case_description`,`case_cost`) VALUES ('3','Warrior case', 'Some desc','0');
+INSERT INTO hb_minecraft_server.opencase (`case_id`,`case_name`, `case_description`,`case_cost`) VALUES ('4','Noob case', 'Some desc','0');
 
 INSERT INTO hb_minecraft_server.`user` (`user_id`,`perm_id`, `nickname`,`password`) VALUES ('1','1', 'Vetalya_Pupkin','12345');
 INSERT INTO hb_minecraft_server.`user` (`user_id`,`perm_id`, `nickname`,`password`) VALUES ('2','1', 'OptimusPrrime69','Doritte123');

@@ -1,14 +1,9 @@
 package ua.minecraftserversite.service;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.query.Query;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 import ua.minecraftserversite.entity.User;
 import ua.minecraftserversite.exception.LoginException;
 import ua.minecraftserversite.repository.UserRepository;
-import ua.minecraftserversite.util.HibernateUtil;
 
 @Service
 public class UserService {
