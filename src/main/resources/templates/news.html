@@ -13,14 +13,14 @@
             <main>
                 <div id="addArticle">
                     <div th:if="${user != null && user.getPermission().getId() == 1}">
-                    <h2>Добавлення статті</h2>
-                    <form action="/news" method="post">
-                        <label>Назва статті</label><br>
-                        <input type="text" name="title" id="titleOfArticle"><br>
-                        <label>Стаття</label><br>
-                        <textarea name="text" id="article"></textarea><br>
-                        <input type="submit" class="button-add" value="Добавити"><br>
-                    </form>
+                        <h2>Добавлення статті</h2>
+                        <form action="/news" method="post">
+                            <label>Назва статті</label><br>
+                            <input type="text" name="title" id="titleOfArticle"><br>
+                            <label>Стаття</label><br>
+                            <textarea name="text" id="article"></textarea><br>
+                            <input type="submit" class="button-add" value="Добавити"><br>
+                        </form>
                     </div>
                 </div>
                 <div id="articles">
