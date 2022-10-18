@@ -81,9 +81,9 @@ public class MainController {
         return "redirect:/news";
     }
 
-    @GetMapping("/buy-permission")
+    @GetMapping(value = "/buy/{id}")
     public String buyPermission(@SessionAttribute(value = "user",required = false) User user,
-                                @RequestParam("id") long id,
+                                @PathVariable(value = "id", required = false) Integer id,
                                 @RequestAttribute(value = "bperm",required = false) Permission bperm,
                       Model model) {
         if (user==null)

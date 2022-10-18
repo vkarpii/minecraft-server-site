@@ -23,47 +23,29 @@
             </div>
 
             <div class="mainPartTwo" id="mainPartTwo">
-                <a class="navbutton" onclick="onClick()" th:each="item : ${permissions}">
-                    <i class="fa-solid fa-dove" th:text="${item.getName()}"></i>
+                <a class="navbutton"  th:each="item : ${permissions}" th:onclick="'javascript:onClick(\'' + ${item.getId()} + '\',\''+ 0 + '\');'">
+                    <i class="fa-solid fa-dove" th:id="'0block' + ${item.getId()}" th:text="${item.getName()}"></i>
+                    <i th:id="'0desc' + ${item.getId()}" th:text="${item.getDescription()}" hidden></i>
+                    <i th:id="'0cost' + ${item.getId()}" th:text="${item.getCost()}" hidden></i>
                 </a>
-                        <!--<a href="#" class="navbutton">
-                            <i class="fa-solid fa-dove">Флай</i>
-                        </a>
-                        <a href="#" class="navbutton">
-                            <i class="fa-solid fa-dumbbell">Креатив</i>
-                        </a>
-                    <a href="#" class="navbutton">
-                        <i class="fa-solid fa-martini-glass-citrus">Віп</i>
-                    </a>
-                    <a href="#" class="navbutton">
-                        <i class="fa-solid fa-sack-dollar">Преміум</i>
-                    </a>-->
             </div>
             <div class="mainPartCases" id="mainPartCases">
-                <a class="navbutton" onclick="onClick()" th:each="item : ${cases}">
-                    <i class="fa-solid fa-caret-right" th:text="${item.getName()}"></i></a>
-                <!--<a href="#" class="navbutton">
-                    <i class="fa-solid fa-caret-right">Кейс1</i></a>
-                <a href="#" class="navbutton">
-                    <i class="fa-solid fa-caret-right">Кейс2</i></a>
-                <a href="#" class="navbutton">
-                    <i class="fa-solid fa-caret-right">Кейс3</i></a>
-                <a href="#" class="navbutton">
-                    <i class="fa-solid fa-caret-right">Кейс4</i></a>-->
-                <!--<div class="button">
-                    <a href="#" id="open-pop-up">ononnonononno</a>
-                </div>-->
+                <a class="navbutton" th:each="item : ${cases}" th:onclick="'javascript:onClick(\'' + ${item.getId()} + '\',\''+ 1 + '\');'">
+                    <i class="fa-solid fa-caret-right" th:id="'1block' + ${item.getId()}" th:text="${item.getName()}"></i>
+                    <i th:id="'1desc' + ${item.getId()}" th:text="${item.getDescription()}" hidden></i>
+                    <i th:id="'1cost' + ${item.getId()}" th:text="${item.getCost()}" hidden></i>
+                </a>
 
             </div>
             <div class="pop-up" id="pop-up">
                 <div class="pop-up-container">
                     <div class="pop-up-body" id="pop-up-body">
                         <p>Ваш вибір: </p>
-                        <form action="">
-                            <h3>Назва : </h3>
-                            <h3>Опис : </h3>
-                            <h3>Ціна : </h3>
-                            <button>Купити</button>
+                        <form  method="get" onsubmit="submitPopUp(this);">
+                            <h3 id="pop-name"></h3>
+                            <h3 id="pop-desc"></h3>
+                            <h3 id="pop-cost"></h3>
+                            <button type="submit">Купити</button>
                         </form>
                         <div class="pop-up-close" id="pop-up-close" onclick="clickClose()">&#10006</div>
                     </div>
