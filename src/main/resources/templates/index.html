@@ -3,17 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Start page</title>
+    <link rel="icon" type="image/png" href="images/favicon.ico.png">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/Index-style.css">
     <link rel="stylesheet" href="css/copy-button-alert.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair+Display|Roboto:300&display=swap">
     <script src="https://kit.fontawesome.com/4afed5dafb.js" crossorigin="anonymous"></script>
-
 </head>
 <body>
     <div class="container">
         <div data-th-include="header.html" class="mb-auto"></div>
-
         <main>
             <div class="mainPartOne">
                 <a class="navbutton" id="privileges">Привілегії</a>
@@ -21,7 +20,6 @@
                 <a class="navbutton" id="copy" onclick="copy()" onmouseout="outFunc()" data-clipboard-target="#copy">
                         minecraft.server.site</a>
             </div>
-
             <div class="mainPartTwo" id="mainPartTwo">
                 <a class="navbutton"  th:each="item : ${permissions}" th:onclick="'javascript:onClick(\'' + ${item.getId()} + '\',\''+ 0 + '\');'">
                     <i class="fa-solid fa-dove" th:id="'0block' + ${item.getId()}" th:text="${item.getName()}"></i>
@@ -35,7 +33,6 @@
                     <i th:id="'1desc' + ${item.getId()}" th:text="${item.getDescription()}" hidden></i>
                     <i th:id="'1cost' + ${item.getId()}" th:text="${item.getCost()}" hidden></i>
                 </a>
-
             </div>
             <div class="pop-up" id="pop-up">
                 <div class="pop-up-container">
@@ -51,15 +48,9 @@
                     </div>
                 </div>
             </div>
-
         </main>
-
-        <section></section>
-
         <div data-th-include="footer.html" class="mb-auto"></div>
-
     </div>
-
     <script src="js/slide.js"></script>
     <script src="js/pop-up.js"></script>
     <script src="js/copy-button.js"></script>

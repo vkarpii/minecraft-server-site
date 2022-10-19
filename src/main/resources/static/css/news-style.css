@@ -43,7 +43,7 @@ textarea {
 }
 
 .article p{
-    color: white;
+    font-color: white;
     font-size: 16px;
     padding: 1.5%;
 }
