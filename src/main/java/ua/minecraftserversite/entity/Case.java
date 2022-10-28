@@ -13,7 +13,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(schema = "case",name = "opencase")
-public class Case {
+public class Case implements Buying{
     @Id
     @Column(name = "case_id")
     private long id;

@@ -1,8 +1,14 @@
 const popUp = document.getElementById('pop-up' );
 var id;
+var name;
 
 function onClick(id,num){//num=0 - prem num=1 - c
     popUp.classList.add('active');
+    if (parseInt(num) === 0){
+        name = "privilege";
+    } else {
+        name = "case";
+    }
 
     let el = document.getElementById(parseInt(num)+'block'+parseInt(id) );
     document.getElementById('pop-name').innerHTML = "Назва : " + el.innerHTML;
@@ -20,5 +26,5 @@ function clickClose(){
 
 function submitPopUp(form){
     console.log("/buy?id=" + parseInt(id));
-    form.action = "/buy/"+parseInt(id);
+    form.action = "/buy/" + name + "_" + parseInt(id);
 }

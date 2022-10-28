@@ -26,7 +26,7 @@
             </div>
             <div class="history-container">
                 <h3>History</h3>
-                <div th:each="item : ${histories}">
+                <div th:each="item : ${histories}" class="history-element">
                     <span>Ви купляли <span th:text="${item.getDescription()}"></span></span>
                 </div>
             </div>

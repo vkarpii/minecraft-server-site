@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Buy</title>
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/main.css" th:href="@{/css/main.css}">
 </head>
 <body>
     <div class="container">
         <div data-th-include="header.html" class="mb-auto"></div>
         <main>
             <div>
-                <p>Назва : <span th:text="${bperm.getName()}"></span></p>
-                <p>Опис : <span th:text="${bperm.getDescription()}"></span></p>
-                <p>Ціна : <span th:text="${bperm.getCost()}"></span></p>
+                <p>Назва : <span th:text="${buy.getName()}"></span></p>
+                <p>Опис : <span th:text="${buy.getDescription()}"></span></p>
+                <p>Ціна : <span th:text="${buy.getCost()}"></span></p>
                 <a href="#">Купити</a>
             </div>
         </main>

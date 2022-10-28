@@ -16,7 +16,7 @@ import javax.persistence.Table;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(schema = "permission")
-public class Permission {
+public class Permission implements Buying{
     @Id
     @Column(name = "perm_id")
     private long id;

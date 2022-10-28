@@ -3,6 +3,7 @@ package ua.minecraftserversite.repository;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 import ua.minecraftserversite.entity.Case;
+import ua.minecraftserversite.entity.Permission;
 import ua.minecraftserversite.util.HibernateUtil;
 
 import java.util.List;
@@ -24,5 +25,14 @@ public class CaseRepository {
         session.getTransaction().commit();
         session.close();
         return cases;
+    }
+
+    public Case getCaseById(long id) {
+        Session session = HibernateUtil.getCurrentSession();
+        session.beginTransaction();
+        Case gCase = session.get(Case.class,id);
+        session.getTransaction().commit();
+        session.close();
+        return gCase;
     }
 }

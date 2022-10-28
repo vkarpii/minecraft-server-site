@@ -6,10 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
 
-import ua.minecraftserversite.entity.History;
-import ua.minecraftserversite.entity.News;
-import ua.minecraftserversite.entity.Permission;
-import ua.minecraftserversite.entity.User;
+import ua.minecraftserversite.entity.*;
 import ua.minecraftserversite.exception.LoginException;
 import ua.minecraftserversite.service.*;
 
@@ -81,15 +78,23 @@ public class MainController {
         return "redirect:/news";
     }
 
-    @GetMapping(value = "/buy/{id}")
+    @GetMapping(value = "/buy/{element}")
     public String buyPermission(@SessionAttribute(value = "user",required = false) User user,
-                                @PathVariable(value = "id", required = false) Integer id,
-                                @RequestAttribute(value = "bperm",required = false) Permission bperm,
+                                @PathVariable(value = "element", required = false) String element,
+                                @RequestAttribute(value = "buy",required = false) Buying buy,
                       Model model) {
         if (user==null)
             return "redirect:/";
-        Permission permission = PermissionService.getInstance().getPermission(id);
-        model.addAttribute("bperm",permission);
+        String[] info = element.split("_");
+        String name = info[0];
+        int id = Integer.parseInt(info[1]);
+        Buying buying = null;
+        if (name.equalsIgnoreCase("privilege")){
+            buying = PermissionService.getInstance().getPermission(id);
+        } else {
+            buying = CaseService.getInstance().getCase(id);
+        }
+        model.addAttribute("buy",buying);
         return "buy-page";
     }
     @GetMapping("/buy-case")
