@@ -25,6 +25,5 @@ function clickClose(){
 }
 
 function submitPopUp(form){
-    console.log("/buy?id=" + parseInt(id));
-    form.action = "/buy/" + name + "_" + parseInt(id);
+    form.action = "/buy/" + name + "/" + parseInt(id);
 }

@@ -78,16 +78,14 @@ public class MainController {
         return "redirect:/news";
     }
 
-    @GetMapping(value = "/buy/{element}")
+    @GetMapping(value = "/buy/{name}/{id}")
     public String buyPermission(@SessionAttribute(value = "user",required = false) User user,
-                                @PathVariable(value = "element", required = false) String element,
+                                @PathVariable(value = "name", required = false) String name,
+                                @PathVariable(value = "id", required = false) int id,
                                 @RequestAttribute(value = "buy",required = false) Buying buy,
                       Model model) {
         if (user==null)
             return "redirect:/";
-        String[] info = element.split("_");
-        String name = info[0];
-        int id = Integer.parseInt(info[1]);
         Buying buying = null;
         if (name.equalsIgnoreCase("privilege")){
             buying = PermissionService.getInstance().getPermission(id);
