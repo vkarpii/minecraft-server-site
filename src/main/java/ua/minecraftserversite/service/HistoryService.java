@@ -1,24 +1,20 @@
 package ua.minecraftserversite.service;
 
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 import ua.minecraftserversite.entity.History;
 import ua.minecraftserversite.entity.User;
 import ua.minecraftserversite.repository.HistoryRepository;
 
 import java.util.List;
 
+@Service
+@RequiredArgsConstructor
 public class HistoryService {
-    private static HistoryService service;
 
-    private HistoryService(){}
-
-    public static HistoryService getInstance(){
-        if (service == null)
-            service = new HistoryService();
-        return service;
-    }
+    private final HistoryRepository repository;
 
     public List<History> printHistory(User user) {
-        List<History> histories = HistoryRepository.getInstance().getHistory(user);
-        return histories;
+        return repository.findByUserId(user.getId());
     }
 }

@@ -1,5 +1,6 @@
 package ua.minecraftserversite.controller;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,14 +14,22 @@ import ua.minecraftserversite.service.*;
 import java.util.List;
 @Slf4j
 @Controller
+@RequiredArgsConstructor
 @SessionAttributes("user")
 public class MainController {
+
+    private final CaseService caseService;
+    private final PermissionService permissionService;
+    private final UserService userService;
+    private final HistoryService historyService;
+    private final NewsService newsService;
+
     @GetMapping("/")
     public String index(Model model,
                         @RequestAttribute(value = "cases",required = false) List cases,
                         @RequestAttribute(value = "permissions",required = false) List permissions) {
-        cases = CaseService.getInstance().printCase();
-        permissions = PermissionService.getInstance().printPermissions();
+        cases = caseService.printCase();
+        permissions = permissionService.printPermissions();
         model.addAttribute("cases",cases);
         model.addAttribute("permissions",permissions);
         return "index";
@@ -28,7 +37,7 @@ public class MainController {
 
     @GetMapping("/news")
     public String news(Model model, @RequestAttribute(value = "news",required = false) List<News> news) {
-        news = NewsService.getInstance().printNews();
+        news = newsService.printNews();
         model.addAttribute("news",news);
         return "news";
     }
@@ -37,7 +46,7 @@ public class MainController {
     public String personalOffice(@SessionAttribute(value = "user",required = false) User user, Model model) {
         if (user==null)
             return "login";
-        List<History> history = HistoryService.getInstance().printHistory(user);
+        List<History> history = historyService.printHistory(user);
         model.addAttribute("histories",history);
         return "personal-office";
     }
@@ -47,8 +56,11 @@ public class MainController {
             @ModelAttribute("title") String title,
             @ModelAttribute("text") String text,
             Model model){
-        News news = new News(title, text);
-        NewsService.getInstance().createNewArticle(news);
+        News news = News.builder()
+                .title(title)
+                .text(text)
+                .build();
+        newsService.createNewArticle(news);
         return "redirect:/news";
     }
 
@@ -60,7 +72,7 @@ public class MainController {
             @RequestAttribute(value = "histories",required = false)List histories,
             Model model) {
         try {
-            user = UserService.getInstance().login(name,pass);
+            user = userService.login(name,pass);
             model.addAttribute("user",user);
         } catch (LoginException e){
             return "login";
@@ -74,7 +86,7 @@ public class MainController {
     }
     @GetMapping ("/delete")
     public String deleteNews(@RequestParam("id") long id,Model model){
-        NewsService.getInstance().deleteNews(id);
+        newsService.deleteNews(id);
         return "redirect:/news";
     }
 
@@ -88,9 +100,9 @@ public class MainController {
             return "redirect:/";
         Buying buying = null;
         if (name.equalsIgnoreCase("privilege")){
-            buying = PermissionService.getInstance().getPermission(id);
+            buying = permissionService.getPermission(id);
         } else {
-            buying = CaseService.getInstance().getCase(id);
+            buying = caseService.getCase(id);
         }
         model.addAttribute("buy",buying);
         return "buy-page";

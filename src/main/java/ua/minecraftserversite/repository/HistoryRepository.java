@@ -1,32 +1,13 @@
 package ua.minecraftserversite.repository;
 
-import org.hibernate.Session;
-import org.hibernate.query.Query;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 import ua.minecraftserversite.entity.History;
-import ua.minecraftserversite.entity.Permission;
-import ua.minecraftserversite.entity.User;
-import ua.minecraftserversite.util.HibernateUtil;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
-public class HistoryRepository {
-    private static HistoryRepository repository;
-    private HistoryRepository(){}
-    public static HistoryRepository getInstance(){
-        if (repository == null)
-            repository = new HistoryRepository();
-        return repository;
-    }
-
-    public List<History> getHistory(User user) {
-        Session session = HibernateUtil.getCurrentSession();
-        session.beginTransaction();
-        Query query=session.createQuery("from History where user.id=:id");
-        query.setParameter("id", user.getId());
-        List<History> histories = query.getResultList();
-        session.getTransaction().commit();
-        session.close();
-        return histories;
-    }
+@Repository
+public interface HistoryRepository extends JpaRepository<History,Long> {
+    List<History> findByUserId(Long id);
 }

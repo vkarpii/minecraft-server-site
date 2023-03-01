@@ -1,37 +1,9 @@
 package ua.minecraftserversite.repository;
 
-import org.hibernate.Session;
-import org.hibernate.query.Query;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 import ua.minecraftserversite.entity.Permission;
-import ua.minecraftserversite.util.HibernateUtil;
 
-import java.util.List;
-
-public class PermissionRepository {
-    private static PermissionRepository repository;
-    private PermissionRepository(){}
-    public static PermissionRepository getInstance(){
-        if (repository == null)
-            repository = new PermissionRepository();
-        return repository;
-    }
-
-    public List<Permission> getAllPermissions() {
-        Session session = HibernateUtil.getCurrentSession();
-        session.beginTransaction();
-        Query query=session.createQuery("from Permission");
-        List<Permission> permissions = query.getResultList();
-        session.getTransaction().commit();
-        session.close();
-        return permissions;
-    }
-
-    public Permission getPermissionById(long id) {
-        Session session = HibernateUtil.getCurrentSession();
-        session.beginTransaction();
-        Permission permission = session.get(Permission.class,id);
-        session.getTransaction().commit();
-        session.close();
-        return permission;
-    }
+@Repository
+public interface PermissionRepository extends JpaRepository<Permission,Long> {
 }
